@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "type name for file be going to creat"
+
+read -p "" name
+
+touch "$name-`date '+%m-%d-%Y-%H:%M'`"
+echo "`lastlog`" > "$name-`date '+%m-%d-%Y-%H:%M'`"
+echo "`last`" >> "$name-`date '+%m-%d-%Y-%H:%M'`"
+sudo bzip2 "$name-`date '+%m-%d-%Y-%H:%M'`"
+echo "done"
