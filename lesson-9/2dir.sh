@@ -4,7 +4,7 @@ e=even
 f="bajanvum e 2"
 n="chi bajanvum 2 i"
 
-mkdir ./"${o}" "${e}" 
+mkdir -p ./"${o}" "${e}" 
 
 for d in {1..20}; do
 
