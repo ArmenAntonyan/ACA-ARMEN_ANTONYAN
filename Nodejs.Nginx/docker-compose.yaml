@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+
+  nginx:
+      image: nginx:latest
+      ports:
+        - 80:80
+      volumes:
+        - ./nginx:/etc/nginx/conf.d
+      restart: always
+      networks:
+      - wp_net
+
+  nodejs:
+      image: testnode:v1
+      ports:
+        - 49160:8080
+      restart: always
+      networks:
+        - wp_net 
+
+networks:
+  wp_net:
+    driver: bridge
+ 
