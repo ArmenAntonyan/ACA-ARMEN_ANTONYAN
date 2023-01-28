@@ -1,0 +1,40 @@
+  
+   - name: Copy file with owner and permissions
+     ansible.builtin.copy:
+      src: index.html 
+      dest: /home/ubuntu/
+      owner: www-data
+      group: www-data
+      mode: '0644'
+    
+   - name: Copy file with owner and permissions
+     ansible.builtin.copy:
+      src: docker-compose.yaml
+      dest: /home/ubuntu/
+      owner: www-data
+      group: www-data
+      mode: '0644'
+
+   - name: Run Nginx
+     shell: sudo docker-compose up -d
+
+  # - name: install python3-pip
+  #   apt: 
+  #    name: python3-pip
+  #    state: present
+
+  # - name: Installing docker==4.4.4 using pip
+  #   pip:
+  #    name: docker==4.4.4
+
+  # - name: Pull nginx Docker image
+  #   docker_image:
+  #    name: nginx
+  #    source: pull
+
+  # - name: Start a container with a command
+  #   docker_container:
+  #    name: sleepy
+  #    image: nginx
+  #    ports:
+  #    - "80:80"

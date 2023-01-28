@@ -1,0 +1,10 @@
+services:
+
+  nginx:
+      image: nginx:latest
+      ports:
+        - 80:80
+      volumes:
+        - /home/ubuntu:/usr/share/nginx/html/
+      restart: always
+      

@@ -1,0 +1,21 @@
+
+    - name: update apt package index
+      apt:
+        update_cache: true
+
+    - name: install docker package
+      apt:
+        name: docker.io
+        state: present
+        
+    - name: Install docker-compose
+      get_url:
+        url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '755'
+
+# - name: Install a Docker
+#     pkg:
+#     - net-tools
+#     - vim
+#     - nginx
