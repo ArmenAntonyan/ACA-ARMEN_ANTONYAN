@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+find /var/log/*   -mmin -60 -exec grep -HIEn "error" {} \; | cut -f1-2 -d: 
+
+
+

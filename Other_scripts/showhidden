@@ -1,0 +1,15 @@
+#!/bin/bash
+
+for file in ./Docker/* ./Docker/.*
+
+do 
+
+if [ -d "$file" ]
+
+    then 
+
+ echo "$file is directory"
+
+fi
+
+done
