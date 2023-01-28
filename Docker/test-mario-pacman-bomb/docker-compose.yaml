@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    restart: always
+    networks:
+      - wp_net
+
+  pacman:
+    image: golucky5/pacman
+    ports:
+      - 33333:80
+    restart: always
+    networks:
+      - wp_net
+
+  mario:
+    image: pengbai/docker-supermario
+    ports:
+      - 11111:8080
+    restart: always
+    networks:
+      - wp_net
+
+  bomberman:
+    image: tuxes3/bomberman
+    ports:
+      - 22222:80
+    restart: always
+    networks:
+      - wp_net
+
+
+
+networks:
+  wp_net:
+    driver: bridge

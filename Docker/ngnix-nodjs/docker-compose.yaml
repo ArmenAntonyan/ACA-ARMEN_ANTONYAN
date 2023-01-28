@@ -1,0 +1,25 @@
+services:
+
+  nginx:
+      image: nginx:latest
+      ports:
+        - 80:80
+      volumes:
+        - ./nginx:/etc/nginx/conf.d
+      restart: always
+      networks:
+        - wp_net
+
+  nodejs:
+      image: mactest:v1
+      ports:
+        - 8080:8080
+      restart: always
+      networks:
+        - wp_net 
+
+networks:
+  wp_net:
+    driver: bridge
+ 
+
