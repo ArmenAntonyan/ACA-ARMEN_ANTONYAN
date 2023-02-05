@@ -96,7 +96,7 @@ user_data = filebase64("${path.module}/data.sh")
 #apt-get -y update
 #apt-get -y install nginx
 #echo "<h1>Hello World from $(hostname -f)</h1>" > 
-/var/www/html/index.html
+#/var/www/html/index.html
 #echo fin v1.00!
 #EOF
 #}
@@ -124,7 +124,7 @@ launch_template {
 # apt-get -y update
 # apt-get -y install nginx
 # echo "<h1>Hello World from $(hostname -f)</h1>" > 
-/var/www/html/index.html
+#/var/www/html/index.html
 # echo fin v1.00!
 # EOF
 
