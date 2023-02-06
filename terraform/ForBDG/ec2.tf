@@ -1,25 +1,25 @@
 resource "aws_instance" "instance" {
- ami = "ami-00149760ce42c967b"
- key_name = "OHIO"
- subnet_id = "subnet-0f747280bcf8c4793"
- availability_zone = "us-east-2a"
- instance_type = "t2.micro"
+ ami = var.ami
+ key_name = var.key
+ subnet_id = var.sub_id
+ availability_zone = var.AZ
+ instance_type = var.itipe
  vpc_security_group_ids = [aws_security_group.terraform_SG.id]
  associate_public_ip_address = true
  user_data = "${file("data.sh")}"
 }
 
 resource "aws_ebs_volume" "volium" {
-  availability_zone = "us-east-2a"
-  size              = 10
-  type              = "gp2"
+  availability_zone = var.AZ
+  size              = var.ebs_size
+  type              = var.ebs_typ
   tags = {
     Name = "Hello"
   }
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
+  device_name = var.aws_vol_device_name
   volume_id   = aws_ebs_volume.volium.id
   instance_id = aws_instance.instance.id
 }

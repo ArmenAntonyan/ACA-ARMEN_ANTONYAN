@@ -1,7 +1,7 @@
 resource "aws_security_group" "terraform_SG" {
   name        = "web_server "
   description = "TASC web server"
-  vpc_id      = "vpc-098b280d7a8fc7540"
+  vpc_id      = var.SG_VPC_id
 
 
 egress {
@@ -12,37 +12,38 @@ egress {
   }
 }
   resource "aws_security_group_rule" "in_ssh" {
-  type              = "ingress"
+  type              = var.SG_rule_type
   from_port         = 0
   to_port           = 22
-  protocol          = "tcp"
+  protocol          = var.SG_rule_protocol
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.terraform_SG.id
 }
 
 resource "aws_security_group_rule" "in_http" {
-  type              = "ingress"
+  type              = var.SG_rule_type
   from_port         = 0
   to_port           = 80
-  protocol          = "tcp"
+  protocol          = var.SG_rule_protocol
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.terraform_SG.id
 }
 
 resource "aws_security_group_rule" "in_https" {
-  type              = "ingress"
+  type              = var.SG_rule_type
   from_port         = 0
   to_port           = 443
-  protocol          = "tcp"
+  protocol          = var.SG_rule_protocol
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.terraform_SG.id
 }
 
 resource "aws_security_group_rule" "in_icmp" {
-  type              = "ingress"
+  type              = var.SG_rule_type
   from_port         = -1
   to_port           = -1
-  protocol          = "icmp"
+  protocol          = var.ping
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.terraform_SG.id
 }
+
