@@ -25,3 +25,7 @@ SG_rule_protocol = "tcp"
 ping = "icmp" 
 
 aws_region = "us-east-2"
+
+s3_bucket_name = "mench-s3-private-777"
+
+acl = "private"

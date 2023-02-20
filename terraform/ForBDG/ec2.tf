@@ -7,6 +7,7 @@ resource "aws_instance" "instance" {
  vpc_security_group_ids = [aws_security_group.terraform_SG.id]
  associate_public_ip_address = true
  user_data = "${file("data.sh")}"
+ iam_instance_profile = aws_iam_instance_profile.my_prof.name
 }
 
 resource "aws_ebs_volume" "volium" {
