@@ -1,0 +1,4 @@
+#for node exporter
+
+docker run -tid --name nodeexporter  -p 9100:9100 --network monitoring 
+--volume /:/host:ro prom/node-exporter:latest --path.rootfs=/host
