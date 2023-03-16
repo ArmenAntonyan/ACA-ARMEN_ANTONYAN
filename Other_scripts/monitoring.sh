@@ -1,16 +1,21 @@
 #!/bin/bash
 
-service nginx status > manitoring.txt
+echo "write name of service which ypu wont monitor"
 
-if grep -q "running" manitoring.txt
+read -p "" service
 
-echo "the service is running"
+service nginx status > $service.txt
+
+if grep -q "running" $service.txt
+
+echo "the $service is running"
 
 else
  
-service nginx start
+service $service start
 
-echo "the service is stopped, error or inactive, service has benn started"
+echo "the $service is stopped, error or inactive, service has benn 
+started"
 
 fi
 
