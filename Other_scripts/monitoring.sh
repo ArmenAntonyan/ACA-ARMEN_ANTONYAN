@@ -4,7 +4,7 @@ echo "write name of service which ypu wont monitor"
 
 read -p "" service
 
-service nginx status > $service.txt
+service $service status > $service.txt
 
 if grep -q "running" $service.txt
 
@@ -19,4 +19,4 @@ started"
 
 fi
 
-rm -rf monitoring.txt
+rm -rf $service.txt
